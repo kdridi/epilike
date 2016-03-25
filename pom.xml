@@ -18,11 +18,27 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-  <modules>
-    <module>epilike-server</module>
-    <module>epilike-client-android</module>
-    <module>epilike-client-desktop</module>
-    <module>epilike-client-web</module>
-    <module>epilike-client</module>
-  </modules>
+	<modules>
+		<module>epilike-server</module>
+		<module>epilike-client-android</module>
+		<module>epilike-client-desktop</module>
+		<module>epilike-client-web</module>
+		<module>epilike-client</module>
+	</modules>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.3</version>
+					<configuration>
+						<!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->
+						<source>1.6</source>
+						<target>1.6</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>
