@@ -3,7 +3,7 @@ package org.epilike.client.commons;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
-import org.apache.thrift.transport.TSocket;
+import org.apache.thrift.transport.THttpClient;
 import org.apache.thrift.transport.TTransport;
 
 import eu.epitech.epilike.thrift.EpiLikeService;
@@ -20,12 +20,10 @@ public class LoginManager {
 	public boolean login(String user, String pass) {
 		boolean result = false;
 		try {
-			TTransport transport;
+			TTransport transport = new THttpClient("http://localhost:8080/epilike/");
 
-			transport = new TSocket("10.38.166.53", 9090);
-			transport.open();
+			TProtocol protocol = new TBinaryProtocol.Factory().getProtocol(transport);
 
-			TProtocol protocol = new TBinaryProtocol(transport);
 			EpiLikeService.Client client = new EpiLikeService.Client(protocol);
 
 			result = client.login(new LoginForm(user, pass));
